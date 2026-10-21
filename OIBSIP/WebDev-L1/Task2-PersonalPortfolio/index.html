@@ -1,1 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Samuel Etoabasi — UI/UX Designer</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css"/>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: Arial, sans-serif; background: #0F1110; color: #EDEBE6; line-height: 1.6; }
+a { text-decoration: none; color: inherit; }
+:root {
+  --bg: #0F1110; --card: #1A1E1C; --border: #2A2F2C;
+  --muted: #9AA09B; --accent: #7FE0A0; --accent2: #C9E8D0;
+}
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0;
+  background: rgba(15,17,16,0.9); backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border); z-index: 100;
+}
+.nav-inner { max-width: 1100px; margin: 0 auto; padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; }
+.logo { font-weight: 800; font-size: 16px; letter-spacing: -0.5px; }
+.logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 22px; align-items: center; }
+.nav-links a { font-size: 13px; color: var(--muted); font-weight: 600; display: inline-flex; gap: 6px; align-items: center; }
+.nav-links a:hover { color: #fff; }
+.btn-nav { background: var(--accent); color: #0F1110; padding: 9px 18px; border-radius: 20px; font-weight: 800; }
 
+.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+.hero { padding: 130px 0 70px; display: flex; gap: 50px; align-items: center; }
+.hero-left { flex: 1.2; }
+.avatar-wrap { display: flex; gap: 20px; align-items: center; margin-bottom: 18px; }
+.avatar { 
+  width: 180px; 
+  height: 180px; 
+  border-radius: 20px; 
+  background: var(--card); 
+  border: 2px solid var(--accent); 
+  display: grid; 
+  place-items: center; 
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.avatar i { font-size: 72px; color: var(--accent); }
+.avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.role-badge { background: var(--card); border: 1px solid var(--border); padding: 6px 12px; border-radius: 20px; font-size: 11px; display: inline-flex; gap: 6px; align-items: center; }
+.role-badge i { color: var(--accent); }
+.hero h1 { font-size: 48px; line-height: 0.95; letter-spacing: -1px; margin: 14px 0; }
+.hero h1 span { color: var(--accent); }
+.hero p { font-size: 15px; color: var(--muted); max-width: 520px; margin-bottom: 24px; }
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn-primary { background: var(--accent); color: #0F1110; padding: 12px 22px; border-radius: 25px; font-size: 13px; font-weight: 800; display: inline-flex; gap: 8px; align-items: center; }
+.btn-secondary { border: 1px solid var(--border); background: var(--card); color: #fff; padding: 12px 22px; border-radius: 25px; font-size: 13px; font-weight: 600; display: inline-flex; gap: 8px; align-items: center; }
+
+.hero-right { flex: 0.8; }
+.hero-card { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 16px; }
+.hero-card .code-box { background: #121412; border: 1px solid var(--border); border-radius: 12px; padding: 14px; font-family: monospace; font-size: 12px; color: var(--muted); line-height: 1.7; }
+.hero-card .code-box b { color: var(--accent); }
+
+.section { padding: 70px 0; border-top: 1px solid var(--border); }
+.section-head { margin-bottom: 28px; }
+.section-head h2 { font-size: 28px; display: flex; gap: 10px; align-items: center; }
+.section-head h2 i { color: var(--accent); }
+.section-head p { font-size: 13px; color: var(--muted); margin-top: 6px; }
+
+.about-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 20px; }
+.about-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 22px; }
+.about-card p { font-size: 14px; color: var(--muted); margin-bottom: 12px; line-height: 1.7; }
+
+.skills { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.skill { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 16px; display: flex; gap: 12px; align-items: center; }
+.skill .icon { width: 36px; height: 36px; background: #121412; border: 1px solid var(--border); border-radius: 8px; display: grid; place-items: center; }
+.skill .icon i { font-size: 18px; color: var(--accent); }
+.skill b { font-size: 13px; display: block; }
+.skill span { font-size: 11px; color: var(--muted); }
+
+.projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.project { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 20px; display: grid; gap: 12px; }
+.project-top { display: flex; justify-content: space-between; align-items: center; }
+.project-top .tag { background: #121412; border: 1px solid var(--border); padding: 4px 10px; border-radius: 20px; font-size: 10px; color: var(--muted); display: inline-flex; gap: 5px; align-items: center; }
+.project h3 { font-size: 16px; }
+.project p { font-size: 12px; color: var(--muted); line-height: 1.6; }
+.project-links { display: flex; gap: 12px; margin-top: 6px; flex-wrap: wrap; }
+.project-links a { font-size: 12px; font-weight: 700; display: inline-flex; gap: 6px; align-items: center; color: var(--accent); }
+.project-links a.secondary { color: var(--muted); }
+
+.contact-box { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 24px; display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+.contact-left h3 { font-size: 18px; margin-bottom: 8px; }
+.contact-left p { font-size: 13px; color: var(--muted); }
+.contact-list { margin-top: 14px; display: grid; gap: 10px; }
+.contact-list a { font-size: 13px; color: var(--muted); display: inline-flex; gap: 8px; align-items: center; }
+.contact-list a:hover { color: #fff; }
+.contact-list a i { color: var(--accent); }
+.contact-right { display: flex; gap: 10px; align-items: flex-start; flex-wrap: wrap; }
+.social { width: 42px; height: 42px; background: #121412; border: 1px solid var(--border); border-radius: 12px; display: grid; place-items: center; }
+.social i { font-size: 18px; color: var(--muted); }
+.social:hover i { color: #fff; }
+
+.footer { padding: 24px 0; border-top: 1px solid var(--border); font-size: 11px; color: var(--muted); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+
+@media (max-width: 860px) {
+  .hero { flex-direction: column; }
+  .hero h1 { font-size: 34px; }
+  .about-grid { grid-template-columns: 1fr; }
+  .skills { grid-template-columns: repeat(2, 1fr); }
+  .projects { grid-template-columns: 1fr; }
+  .nav-links a.hide-m { display: none; }
+  .avatar-wrap { flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="nav-inner">
+    <div class="logo">samuel<span>.design</span></div>
+    <nav class="nav-links">
+      <a href="#about" class="hide-m"><i class="ri-user-line"></i> About</a>
+      <a href="#skills" class="hide-m"><i class="ri-palette-line"></i> Skills</a>
+      <a href="#projects" class="hide-m"><i class="ri-folder-line"></i> Projects</a>
+      <a href="#contact"><i class="ri-mail-line"></i> Contact</a>
+      <a href="mailto:etoabasis@gmail.com" class="btn-nav"><i class="ri-send-plane-line"></i> Hire Me</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="hero">
+    <div class="hero-left">
+      <div class="avatar-wrap">
+        <!-- REPLACE THIS IMAGE WITH YOUR OWN -->
+        <div class="avatar">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face" alt="Samuel Etoabasi">
+        </div>
+        <div>
+          <div class="role-badge"><i class="ri-map-pin-line"></i> Akwa Ibom, Nigeria • Available</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:8px;display:flex;gap:6px;align-items:center"><i class="ri-checkbox-blank-circle-fill" style="font-size:8px;color:var(--accent)"></i> Open for UI/UX projects</div>
+          <div style="font-size:11px;color:var(--muted);margin-top:6px">09069272637 • etoabasis@gmail.com</div>
+        </div>
+      </div>
+      <h1>Hi, I'm<br><span>Samuel Etoabasi.</span><br>UI/UX Designer.</h1>
+      <p>I design clean, user-centered interfaces that solve real problems. From landing pages to mobile apps — focused on clarity, flow, and conversion for businesses in Nigeria and beyond.</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn-primary"><i class="ri-rocket-line"></i> View My Work</a>
+        <a href="#contact" class="btn-secondary"><i class="ri-phone-line"></i> 09069272637</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-card">
+        <div class="code-box">
+          <span style="color:var(--muted)">// designer.js</span><br>
+          <b>const</b> samuel = {<br>
+          &nbsp;&nbsp;name: <span style="color:var(--accent2)">"Samuel Etoabasi"</span>,<br>
+          &nbsp;&nbsp;role: <span style="color:var(--accent2)">"UI/UX Designer"</span>,<br>
+          &nbsp;&nbsp;location: <span style="color:var(--accent2)">"Akwa Ibom, NG"</span>,<br>
+          &nbsp;&nbsp;tools: [<span style="color:var(--accent2)">"Figma","Framer","Webflow"</span>],<br>
+          &nbsp;&nbsp;focus: <span style="color:var(--accent2)">"Product Design"</span><br>
+          };<br><br>
+          <b>export default</b> samuel;
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section">
+    <div class="section-head">
+      <h2><i class="ri-user-line"></i> About Me</h2>
+      <p>Designer based in Uyo — building for clarity.</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-card">
+        <p>I'm Samuel Etoabasi, a UI/UX Designer from Akwa Ibom, Nigeria. I help startups and local businesses turn ideas into simple, beautiful digital experiences.</p>
+        <p>With a focus on user research, wireframing, and high-fidelity UI, I've worked on landing pages like Nto Uduak's Villa and products that need to work on any device.</p>
+        <p>When I'm not designing, I'm exploring new design trends and improving how users interact with everyday products.</p>
+      </div>
+      <div class="about-card">
+        <div style="display:grid;gap:14px">
+          <div style="display:flex;gap:10px;align-items:center"><div class="icon" style="width:36px;height:36px;background:#121412;border:1px solid var(--border);border-radius:8px;display:grid;place-items:center"><i class="ri-map-pin-line" style="color:var(--accent)"></i></div><div><b style="font-size:13px">Akwa Ibom, Nigeria</b><br><span style="font-size:11px;color:var(--muted)">Open to remote & onsite</span></div></div>
+          <div style="display:flex;gap:10px;align-items:center"><div class="icon" style="width:36px;height:36px;background:#121412;border:1px solid var(--border);border-radius:8px;display:grid;place-items:center"><i class="ri-palette-line" style="color:var(--accent)"></i></div><div><b style="font-size:13px">UI/UX Focus</b><br><span style="font-size:11px;color:var(--muted)">Web & mobile product design</span></div></div>
+          <div style="display:flex;gap:10px;align-items:center"><div class="icon" style="width:36px;height:36px;background:#121412;border:1px solid var(--border);border-radius:8px;display:grid;place-items:center"><i class="ri-phone-line" style="color:var(--accent)"></i></div><div><b style="font-size:13px">09069272637</b><br><span style="font-size:11px;color:var(--muted)">Available 9am — 6pm WAT</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="section">
+    <div class="section-head">
+      <h2><i class="ri-palette-line"></i> Skills</h2>
+      <p>Design tools and strengths.</p>
+    </div>
+    <div class="skills">
+      <div class="skill"><div class="icon"><i class="ri-figma-line"></i></div><div><b>Figma</b><span>Design & prototype</span></div></div>
+      <div class="skill"><div class="icon"><i class="ri-layout-line"></i></div><div><b>UI Design</b><span>Web & mobile</span></div></div>
+      <div class="skill"><div class="icon"><i class="ri-user-search-line"></i></div><div><b>UX Research</b><span>User flows</span></div></div>
+      <div class="skill"><div class="icon"><i class="ri-wireframe-line"></i></div><div><b>Wireframing</b><span>Low → high fidelity</span></div></div>
+      <div class="skill"><div class="icon"><i class="ri-html5-line"></i></div><div><b>HTML / CSS</b><span>Dev handoff</span></div></div>
+      <div class="skill"><div class="icon"><i class="ri-smartphone-line"></i></div><div><b>Responsive</b><span>Mobile-first</span></div></div>
+      <div class="skill"><div class="icon"><i class="ri-magic-line"></i></div><div><b>Design Systems</b><span>Components</span></div></div>
+      <div class="skill"><div class="icon"><i class="ri-team-line"></i></div><div><b>Collaboration</b><span>Figma, Slack</span></div></div>
+    </div>
+  </section>
+
+  <section id="projects" class="section">
+    <div class="section-head">
+      <h2><i class="ri-folder-line"></i> Projects</h2>
+      <p>Selected UI/UX work.</p>
+    </div>
+    <div class="projects">
+      <div class="project">
+        <div class="project-top"><span class="tag"><i class="ri-home-5-line"></i> Landing Page</span><span class="tag"><i class="ri-map-pin-line"></i> Uyo</span></div>
+        <h3>Nto Uduak's Villa — Hospitality Website</h3>
+        <p>UI/UX for a private short-let villa in Osongama Estate, Uyo. Focus on calm, trust, and fast booking — forest green + gold palette, icon-based features.</p>
+        <div class="project-links">
+          <a href="#"><i class="ri-external-link-line"></i> View Case Study</a>
+          <a href="#" class="secondary"><i class="ri-figma-line"></i> figma.com/@samuel/villa</a>
+        </div>
+      </div>
+      <div class="project">
+        <div class="project-top"><span class="tag"><i class="ri-store-3-line"></i> Brand UI</span><span class="tag"><i class="ri-palette-line"></i> Concept</span></div>
+        <h3>Brew & Bloom — Coffee Brand UI</h3>
+        <p>Concept landing page UI for a coffee brand. Explored typography, colour consistency, and responsive grid — designed to convert visitors to orders.</p>
+        <div class="project-links">
+          <a href="#"><i class="ri-external-link-line"></i> View Prototype</a>
+          <a href="#" class="secondary"><i class="ri-github-line"></i> github.com/samuelet/coffee-ui</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <div class="section-head">
+      <h2><i class="ri-mail-line"></i> Contact</h2>
+      <p>Let's design something that works.</p>
+    </div>
+    <div class="contact-box">
+      <div class="contact-left">
+        <h3>Samuel Etoabasi</h3>
+        <p>UI/UX Designer • Akwa Ibom, Nigeria</p>
+        <div class="contact-list">
+          <a href="mailto:etoabasis@gmail.com"><i class="ri-mail-line"></i> etoabasis@gmail.com</a>
+          <a href="tel:09069272637"><i class="ri-phone-line"></i> 09069272637</a>
+          <a href="#"><i class="ri-map-pin-line"></i> Uyo, Akwa Ibom State, Nigeria</a>
+        </div>
+      </div>
+      <div class="contact-right">
+        <a href="mailto:etoabasis@gmail.com" class="social"><i class="ri-mail-line"></i></a>
+        <a href="tel:09069272637" class="social"><i class="ri-phone-line"></i></a>
+        <a href="#" class="social"><i class="ri-dribbble-line"></i></a>
+        <a href="#" class="social"><i class="ri-behance-line"></i></a>
+        <a href="#" class="social"><i class="ri-linkedin-line"></i></a>
+        <a href="#" class="social"><i class="ri-github-line"></i></a>
+      </div>
+    </div>
+    <div class="footer">
+      <span>© 2026 Samuel Etoabasi. UI/UX Designer, Akwa Ibom.</span>
+      <span>etoabasis@gmail.com • 09069272637</span>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>
