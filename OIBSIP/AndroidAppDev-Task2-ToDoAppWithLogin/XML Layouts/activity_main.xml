@@ -1,0 +1,8 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent" android:padding="16dp">
+    <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <Button android:id="@+id/btnAddTask" android:text="Add Task" android:layout_weight="1" android:layout_width="0dp" android:layout_height="wrap_content"/>
+        <Button android:id="@+id/btnLogout" android:text="Logout" android:layout_weight="1" android:layout_width="0dp" android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <TextView android:id="@+id/emptyView" android:text="No tasks yet! Tap Add Task to get started 😊" android:gravity="center" android:padding="40dp" android:layout_width="match_parent" android:layout_height="match_parent" android:visibility="gone"/>
+    <androidx.recyclerview.widget.RecyclerView android:id="@+id/recyclerTasks" android:layout_width="match_parent" android:layout_height="match_parent"/>
+</LinearLayout>
